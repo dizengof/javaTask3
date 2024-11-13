@@ -1,2 +1,3 @@
-public class Car extends LandVehicle{
+public class Car extends LandVehicle {
+
 }
