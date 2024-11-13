@@ -1,9 +1,16 @@
-abstract class Vehicle {
+import java.util.Random;
+
+sealed abstract class Vehicle permits SeaFaringVehicle, LandVehicle, FlyingVehicle {
+    String[] colors = {"red", "orange", "yellow", "green", "blue", "purple", "pink"};
+    Random rand = new Random();
+    String color;
+
     abstract void move();
     abstract void stop();
+    abstract void showInfo();
 }
 
-abstract class SeaFaringVehicle extends Vehicle {
+non-sealed abstract class SeaFaringVehicle extends Vehicle {
     @Override
     void move() {
         System.out.println("It swims!");
@@ -15,7 +22,7 @@ abstract class SeaFaringVehicle extends Vehicle {
     }
 }
 
-abstract class LandVehicle extends Vehicle {
+non-sealed abstract class LandVehicle extends Vehicle {
     @Override
     void move() {
         System.out.println("It rides!");
@@ -27,7 +34,8 @@ abstract class LandVehicle extends Vehicle {
     }
 }
 
-abstract class FlyingVehicle extends Vehicle {
+non-sealed abstract class FlyingVehicle extends Vehicle {
+
     @Override
     void move() {
         System.out.println("It flies!");
